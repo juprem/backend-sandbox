@@ -1,4 +1,4 @@
-package exception
+package com.jupremator.sandbox.exception
 
 class NoSuchTodoException(private val id: String): NoSuchException("No such todo for id : $id") {
     override fun type() = "no-such-todo"

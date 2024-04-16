@@ -1,6 +1,6 @@
-package exception
+package com.jupremator.sandbox.exception
 
-abstract class InvalidException: BusinessException {
+abstract class NoSuchException: BusinessException {
 
     constructor() : super()
     constructor(message: String) : super(message)

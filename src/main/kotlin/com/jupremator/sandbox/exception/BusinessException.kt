@@ -1,4 +1,4 @@
-package exception
+package com.jupremator.sandbox.exception
 abstract class BusinessException: Exception {
 
     constructor() : super()
