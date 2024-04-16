@@ -1,8 +1,8 @@
-package todo.controller
+package com.jupremator.sandbox.todo.controller
 
-import exception.BusinessException
-import exception.InvalidException
-import exception.NoSuchException
+import com.jupremator.sandbox.exception.BusinessException
+import com.jupremator.sandbox.exception.InvalidException
+import com.jupremator.sandbox.exception.NoSuchException
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatusCode

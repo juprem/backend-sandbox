@@ -1,4 +1,4 @@
-package todo.model
+package com.jupremator.sandbox.todo.model
 
 import jakarta.persistence.*
 import java.time.LocalDateTime

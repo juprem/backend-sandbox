@@ -1,9 +1,9 @@
-package todo.model
+package com.jupremator.sandbox.todo.model
 
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 
-@Mapper
+@Mapper(componentModel = "spring")
 interface TodoMapper {
 
     @Mapping(target = "id", constant = "")
@@ -11,7 +11,6 @@ interface TodoMapper {
 
     fun toModel(todoEntity: TodoEntity): Todo
 
-    @Mapping(target = "id", constant = "")
     fun toModel(todoEntity: List<TodoEntity>): List<Todo>
 
     fun toModel(todoView: TodoView): Todo

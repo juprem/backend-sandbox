@@ -10,3 +10,15 @@ spring:
     clean-disabled: "false"
   jpa:
     show-sql: false
+  security:
+    user:
+      password: "password"
+      name: "user"
+
+springdoc:
+  swagger-ui:
+    supported-submit-methods: ["get", "put", "post", "delete", "patch"]
+
+server:
+  servlet:
+    context-path: /api

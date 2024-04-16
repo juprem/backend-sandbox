@@ -1,4 +1,4 @@
-package todo.model
+package com.jupremator.sandbox.todo.model
 
 import java.time.LocalDateTime
 

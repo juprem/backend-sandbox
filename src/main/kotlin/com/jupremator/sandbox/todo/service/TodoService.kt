@@ -1,11 +1,11 @@
-package todo.service
+package com.jupremator.sandbox.todo.service
 
-import exception.NoSuchTodoException
+import com.jupremator.sandbox.exception.NoSuchTodoException
 import org.springframework.stereotype.Service
-import todo.dao.TodoRepository
-import todo.model.Todo
-import todo.model.TodoEntity
-import todo.model.TodoMapper
+import com.jupremator.sandbox.todo.dao.TodoRepository
+import com.jupremator.sandbox.todo.model.Todo
+import com.jupremator.sandbox.todo.model.TodoEntity
+import com.jupremator.sandbox.todo.model.TodoMapper
 
 @Service
 class TodoService(
