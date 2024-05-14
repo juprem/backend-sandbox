@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/sandbox"
+    driverClassName: "org.postgresql.Driver"
+    password: "mypassword"
+    username: "user"
+  flyway:
+    locations: "classpath:db/migration,classpath:db/local"
+    clean-on-validation-error: true
+    clean-disabled: false
+  jpa:
+    show-sql: false
+  security:
+    user:
+      password: "password"
+      name: "user"
+
+springdoc:
+  swagger-ui:
+    supported-submit-methods: ["get", "put", "post", "delete", "patch"]
+
+server:
+  servlet:
+    context-path: /api
