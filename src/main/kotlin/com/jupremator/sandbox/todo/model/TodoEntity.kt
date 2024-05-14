@@ -8,8 +8,13 @@ import java.time.LocalDateTime
 data class TodoEntity(
         @Id @GeneratedValue(strategy = GenerationType.UUID)
         val id: String,
-        val name: String,
-        val description: String?,
+        var name: String,
+        var description: String?,
         @Column(name = "created_time")
-        val createdTime: LocalDateTime
-)
+        val createdTime: LocalDateTime,
+) {
+        companion object {
+                fun build(id: String): TodoEntity =
+                        TodoEntity(id, "", "", LocalDateTime.now())
+        }
+}

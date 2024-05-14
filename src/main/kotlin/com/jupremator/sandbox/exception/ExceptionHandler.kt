@@ -1,8 +1,5 @@
-package com.jupremator.sandbox.todo.controller
+package com.jupremator.sandbox.exception
 
-import com.jupremator.sandbox.exception.BusinessException
-import com.jupremator.sandbox.exception.InvalidException
-import com.jupremator.sandbox.exception.NoSuchException
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatusCode
@@ -22,7 +19,7 @@ class ExceptionHandler : ResponseEntityExceptionHandler() {
 
     @ExceptionHandler
     fun handleWithNotFound(ex: NoSuchException, request: WebRequest?): ProblemDetail =
-            build(HttpStatus.NOT_FOUND, ex.message ?: "Todo not found", ex)
+            build(HttpStatus.NOT_FOUND, ex.message ?: "Task not found", ex)
 
     @ExceptionHandler
     fun handleWithBadRequest(ex: InvalidException, request: WebRequest?): ProblemDetail =
