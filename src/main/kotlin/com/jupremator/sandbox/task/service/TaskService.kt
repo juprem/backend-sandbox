@@ -23,9 +23,9 @@ class TaskService(
     }
 
     @Transactional
-    fun deleteById(id: String) {
+    fun deleteById(id: String) =
         taskRepository.deleteById(id)
-    }
+
 
     @Transactional
     fun createTask(id: String, task: TaskCreate): Task {
