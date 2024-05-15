@@ -54,7 +54,7 @@ class TodoController(
     fun createTodo(@RequestBody todoCreate: TodoCreate): ResponseEntity<TodoView> =
             ResponseEntity.ok(todoMapper.toView(todoService.create(todoCreate)))
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     @LogUserAction
     fun updateTodo(@PathVariable id: String, todoUpdate: TodoUpdate): ResponseEntity<TodoView> =
             ResponseEntity.ok(todoMapper.toView(todoService.updateTodo(id, todoUpdate)))
