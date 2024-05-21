@@ -10,8 +10,8 @@ interface TodoMapper {
     fun toEntity(todo: Todo): TodoEntity
 
     @Mapping(target = "id", constant = "")
-    @Mapping(target = "createdTime", source = "createDate")
-    fun toEntity(todoCreate: TodoCreate, createDate: LocalDateTime): TodoEntity
+    @Mapping(target = "createdTime", source = "createTime")
+    fun toEntity(todoCreate: TodoCreate, createTime: LocalDateTime): TodoEntity
 
     fun toModel(todoEntity: TodoEntity): Todo
 
