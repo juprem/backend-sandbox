@@ -6,4 +6,4 @@ ENV POSTGRES_DB=sandbox \
     POSTGRES_PASSWORD=mypassword
 
 # Expose PostgreSQL port
-EXPOSE 5432
+EXPOSE 5433

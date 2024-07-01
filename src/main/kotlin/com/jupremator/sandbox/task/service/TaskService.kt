@@ -5,8 +5,8 @@ import com.jupremator.sandbox.exception.NoSuchTodoException
 import com.jupremator.sandbox.task.dao.TaskRepository
 import com.jupremator.sandbox.task.model.*
 import com.jupremator.sandbox.todo.dao.TodoRepository
-import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class TaskService(
@@ -14,8 +14,10 @@ class TaskService(
         private val todoRepository: TodoRepository,
         private val taskMapper: TaskMapper,
 ) {
+    @Transactional(readOnly = true)
     fun getByTodoId(todoId: String): List<Task> = taskMapper.toModel(taskRepository.findAllByTodoId(todoId))
 
+    @Transactional(readOnly = true)
     fun getById(id: String): Task {
         val task = taskRepository.findById(id).orElseThrow { NoSuchTaskException(id) }
 
