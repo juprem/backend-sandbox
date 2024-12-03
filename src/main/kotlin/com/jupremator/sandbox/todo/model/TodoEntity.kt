@@ -1,43 +1,46 @@
 package com.jupremator.sandbox.todo.model
 
+import io.hypersistence.utils.hibernate.type.array.ListArrayType
 import jakarta.persistence.*
 import org.hibernate.Hibernate
+import org.hibernate.annotations.Type
 import java.time.LocalDateTime
 
 @Entity
 @Table(name = "todo")
 class TodoEntity(
-        @Id @GeneratedValue(strategy = GenerationType.UUID)
-        val id: String,
-        var name: String,
-        var description: String?,
-        @Column(name = "created_time")
-        val createdTime: LocalDateTime,
+    @Id @GeneratedValue(strategy = GenerationType.UUID)
+    val id: String,
+    var name: String,
+    var description: String?,
+    @Column(name = "created_time")
+    val createdTime: LocalDateTime,
+    @Column(name = "due_date")
+    val dueDate: LocalDateTime,
+    val priority: PriorityEnum,
+    @Column(name = "is_archived")
+    val isArchived: Boolean,
+    @Type(ListArrayType::class)
+    val tags: List<String>,
 ) {
-        companion object {
-                fun build(id: String): TodoEntity =
-                        TodoEntity(id, "", "", LocalDateTime.now())
-        }
+    companion object {
+        fun build(id: String): TodoEntity =
+            TodoEntity(id, "", "", LocalDateTime.now(), LocalDateTime.now(), PriorityEnum.LOW, false, emptyList())
+    }
 
-        override fun equals(other: Any?): Boolean {
-                if (this === other) return true
-                if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
 
-                other as TodoEntity
+        other as TodoEntity
 
-                if (id != other.id) return false
-                if (name != other.name) return false
-                if (description != other.description) return false
-                if (createdTime != other.createdTime) return false
+        return id == other.id
+    }
 
-                return true
-        }
+    override fun hashCode(): Int {
+        val result = id.hashCode()
+        return result
+    }
 
-        override fun hashCode(): Int {
-                var result = id.hashCode()
-                result = 31 * result + name.hashCode()
-                result = 31 * result + (description?.hashCode() ?: 0)
-                result = 31 * result + createdTime.hashCode()
-                return result
-        }
+    fun getIsArchived() = isArchived
 }

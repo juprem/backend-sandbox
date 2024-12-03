@@ -23,15 +23,14 @@ class SecurityConfig {
     ): SecurityFilterChain {
 
         http
-                .cors(Customizer.withDefaults())
                 .csrf { obj: AbstractHttpConfigurer<*, *> -> obj.disable() }
                 .authorizeHttpRequests { request ->
                     request
-                            .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                            .requestMatchers("/api/**").permitAll()
-                            .anyRequest().permitAll()
+                        .requestMatchers("/api/**").permitAll()
+                        .anyRequest().permitAll()
                 }
-                .sessionManagement { manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
+
+            .sessionManagement { manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
         return http.build()
     }
 

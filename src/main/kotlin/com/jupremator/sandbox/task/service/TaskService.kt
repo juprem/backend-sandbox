@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class TaskService(
-        private val taskRepository: TaskRepository,
-        private val todoRepository: TodoRepository,
-        private val taskMapper: TaskMapper,
+    private val taskRepository: TaskRepository,
+    private val todoRepository: TodoRepository,
+    private val taskMapper: TaskMapper,
 ) {
     @Transactional(readOnly = true)
     fun getByTodoId(todoId: String): List<Task> = taskMapper.toModel(taskRepository.findAllByTodoId(todoId))
@@ -30,7 +30,10 @@ class TaskService(
     }
 
     @Transactional
-    fun createTask(id: String, task: TaskCreate): Task {
+    fun createTask(
+        id: String,
+        task: TaskCreate,
+    ): Task {
         todoRepository.findById(id).orElseThrow { NoSuchTodoException(id) }
 
         val taskEntity = taskRepository.save(taskMapper.toEntity(task, id))
@@ -39,13 +42,15 @@ class TaskService(
     }
 
     @Transactional
-    fun updateTask(id: String, taskUpdate: TaskUpdate): Task {
+    fun updateTask(
+        id: String,
+        taskUpdate: TaskUpdate,
+    ): Task {
         val task = taskRepository.findById(id).orElseThrow { NoSuchTaskException(id) }
 
         task.apply {
             description = taskUpdate.description
             name = taskUpdate.name
-            done = taskUpdate.done
         }
 
         return taskMapper.toModel(task)

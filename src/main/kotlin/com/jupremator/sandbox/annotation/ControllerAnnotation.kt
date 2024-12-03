@@ -6,6 +6,4 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping
-@CrossOrigin
-annotation class ControllerAnnotation {
-}
+annotation class ControllerAnnotation

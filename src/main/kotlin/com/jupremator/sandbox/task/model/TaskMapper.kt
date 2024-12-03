@@ -13,11 +13,12 @@ abstract class TaskMapper {
 
     abstract fun toEntity(task: Task): TaskEntity
     @Mapping(source = "todoId", target = "todo", qualifiedByName = ["toTodoEntity"])
-    @Mapping(target = "done", constant = "false")
     @Mapping(target = "id", constant = "")
+    @Mapping(target = "status", constant = "TODO")
+    @Mapping(target = "createdDate", expression = "java( LocalDateTime.now() )")
     abstract fun toEntity(task: TaskCreate, todoId: String): TaskEntity
     abstract fun toModel(taskEntity: List<TaskEntity>): List<Task>
     abstract fun toModel(taskEntity: TaskEntity): Task
-    abstract fun toView(task: Task): TaskView
-    abstract fun toView(task: List<Task>): List<TaskView>
+    abstract fun toView(task: Task): TaskResponse
+    abstract fun toView(task: List<Task>): List<TaskResponse>
 }

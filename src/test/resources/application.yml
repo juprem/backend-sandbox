@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:13.7://hostname/sandbox
+  security:
+    user:
+      password: "password"
+      name: "user"
+
+server:
+  servlet:
+    context-path: /api
