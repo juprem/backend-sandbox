@@ -1,22 +1,16 @@
 package com.jupremator.sandbox.exception
 
-import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatusCode
 import org.springframework.http.ProblemDetail
-import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
+import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.context.request.WebRequest
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
 import java.net.URI
 
 @RestControllerAdvice
 class ExceptionHandler : ResponseEntityExceptionHandler() {
-
-    companion object {
-        private val LOGGER = LoggerFactory.getLogger(ExceptionHandler::class.java)
-    }
-
     @ExceptionHandler
     fun handleWithNotFound(ex: NoSuchException, request: WebRequest?): ProblemDetail =
             build(HttpStatus.NOT_FOUND, ex.message ?: "Task not found", ex)

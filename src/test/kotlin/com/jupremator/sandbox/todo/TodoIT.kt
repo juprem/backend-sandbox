@@ -5,11 +5,13 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import com.jupremator.sandbox.annotation.BasicIT
 import com.jupremator.sandbox.todo.dao.TodoRepository
 import com.jupremator.sandbox.todo.model.*
+import com.jupremator.sandbox.todo.service.TodoService
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Example
 import org.springframework.http.MediaType
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors
 import org.springframework.test.web.servlet.MockMvc
@@ -23,6 +25,7 @@ class TodoIT(
     @Autowired private val todoRepository: TodoRepository,
     @Autowired private val objectMapper: ObjectMapper,
     @Autowired private val mvc: MockMvc,
+    @Autowired private val todoService: TodoService
 ) {
     @AfterEach
     fun after() {

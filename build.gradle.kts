@@ -38,6 +38,7 @@ dependencies {
 
     // JACKSON
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("com.opencsv:opencsv:5.8")
 
     // MAPSTRUCT
     implementation("org.mapstruct:mapstruct:1.5.3.Final")
@@ -89,6 +90,12 @@ tasks.test {
 }
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
+}
+
+tasks.jacocoTestReport {
+    reports {
+        xml.required = true
+    }
 }
 
 configurations.all {

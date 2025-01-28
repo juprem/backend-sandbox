@@ -28,5 +28,5 @@ interface TodoMapper {
     fun toView(todo: Todo): TodoResponse
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    fun partialUpdate(todo: TodoUpdate, @MappingTarget todoEntity: TodoEntity): TodoEntity
+    fun partialUpdate(todo: TodoUpdate, @MappingTarget todoEntity: TodoEntity)
 }

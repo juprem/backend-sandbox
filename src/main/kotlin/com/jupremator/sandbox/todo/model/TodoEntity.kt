@@ -25,7 +25,7 @@ class TodoEntity(
 ) {
     companion object {
         fun build(id: String): TodoEntity =
-            TodoEntity(id, "", "", LocalDateTime.now(), LocalDateTime.now(), PriorityEnum.LOW, false, emptyList())
+            TodoEntity(id, "", "dazd", LocalDateTime.now(), LocalDateTime.now(), PriorityEnum.LOW, false, emptyList())
     }
 
     override fun equals(other: Any?): Boolean {
@@ -44,3 +44,5 @@ class TodoEntity(
 
     fun getIsArchived() = isArchived
 }
+
+abstract class EntityTTT
