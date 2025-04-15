@@ -2,7 +2,7 @@ spring:
   datasource:
     url: "jdbc:postgresql://localhost:5433/sandbox"
     driverClassName: "org.postgresql.Driver"
-    password: "mypassword"
+    password: "password1234"
     username: "user"
   flyway:
     locations: "classpath:db/migration,classpath:db/local"

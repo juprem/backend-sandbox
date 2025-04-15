@@ -15,13 +15,22 @@ class TaskService(
     private val taskMapper: TaskMapper,
 ) {
     @Transactional(readOnly = true)
-    fun getByTodoId(todoId: String): List<Task> = taskMapper.toModel(taskRepository.findAllByTodoId(todoId))
+    fun getByTodoId(todoId: String): List<Task> = taskMapper.toModel(taskRepository.findAllByTodoId(todoId).sortedBy { it.status })
 
     @Transactional(readOnly = true)
     fun getById(id: String): Task {
         val task = taskRepository.findById(id).orElseThrow { NoSuchTaskException(id) }
 
         return taskMapper.toModel(task)
+    }
+
+    @Transactional
+    fun setDone(id: String) {
+        val task = taskRepository.findById(id).orElseThrow { NoSuchTaskException(id) }
+
+        task.apply {
+            status = if (status == StatusEnum.DONE) StatusEnum.TODO else StatusEnum.DONE
+        }
     }
 
     @Transactional

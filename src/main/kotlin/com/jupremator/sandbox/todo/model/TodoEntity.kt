@@ -12,7 +12,6 @@ class TodoEntity(
     @Id @GeneratedValue(strategy = GenerationType.UUID)
     val id: String,
     var name: String,
-    var description: String?,
     @Column(name = "created_time")
     val createdTime: LocalDateTime,
     @Column(name = "due_date")
@@ -22,10 +21,12 @@ class TodoEntity(
     val isArchived: Boolean,
     @Type(ListArrayType::class)
     val tags: List<String>,
+    val isDone: Boolean,
+    var description: String?,
 ) {
     companion object {
         fun build(id: String): TodoEntity =
-            TodoEntity(id, "", "dazd", LocalDateTime.now(), LocalDateTime.now(), PriorityEnum.LOW, false, emptyList())
+            TodoEntity(id, "dazd", LocalDateTime.now(), LocalDateTime.now(), PriorityEnum.LOW, false, emptyList(), false, "")
     }
 
     override fun equals(other: Any?): Boolean {
@@ -43,6 +44,5 @@ class TodoEntity(
     }
 
     fun getIsArchived() = isArchived
+    fun getIsDone() = isDone
 }
-
-abstract class EntityTTT

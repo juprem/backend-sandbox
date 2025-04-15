@@ -44,5 +44,9 @@ class TaskController(
     fun getTasks(@PathVariable id: String): ResponseEntity<List<TaskResponse>> =
         ResponseEntity.ok(taskMapper.toView(taskService.getByTodoId(id)))
 
-
+    @PostMapping("/tasks/{id}/done")
+    @LogUserAction
+    fun setTaskDone(@PathVariable id: String) {
+        ResponseEntity.ok(taskService.setDone(id))
+    }
 }

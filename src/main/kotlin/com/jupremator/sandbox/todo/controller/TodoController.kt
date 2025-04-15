@@ -41,6 +41,6 @@ class TodoController(
 
     @PutMapping("/todos/{id}")
     @LogUserAction
-    fun updateTodo(@PathVariable id: String, todoUpdate: TodoUpdate): ResponseEntity<TodoResponse> =
+    fun updateTodo(@PathVariable id: String, @RequestBody todoUpdate: TodoUpdate): ResponseEntity<TodoResponse> =
             ResponseEntity.ok(todoMapper.toView(todoService.updateTodo(id, todoUpdate)))
 }

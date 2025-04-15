@@ -19,7 +19,7 @@ class TaskEntity(
     @JoinColumn(name = "todo_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     val todo: TodoEntity,
-    val status: StatusEnum,
+    var status: StatusEnum,
     val priority: PriorityEnum,
     @Column(name = "created_date")
     val createdDate: LocalDateTime,

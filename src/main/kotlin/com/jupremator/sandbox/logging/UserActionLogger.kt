@@ -23,4 +23,5 @@ class UserActionLogger {
             LOGGER.warn("Error when log user action", e)
         }
     }
+
 }
